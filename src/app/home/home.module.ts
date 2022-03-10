@@ -1,5 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from '@angular/common/http';
+
 import { HomeCardComponent } from "./home-card/home-card.component";
 import { HomeCurrencyComponent } from "./home-currency/home-currency.component";
 import { HomeFooterComponent } from "./home-footer/home-footer.component";
@@ -25,7 +27,8 @@ import { HomeComponent } from "./home.component";
   ],
   imports: [
     HomeRoutingModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
 })
 export class HomeModule {}

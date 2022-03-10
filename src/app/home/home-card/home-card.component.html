@@ -1,11 +1,10 @@
 <div class="home-card">
-  <div class="home-card__img" [ngStyle]="{backgroundImage: 'url(assets/images/card.png)'}">
-    <div class="home__img-type">PC</div>
-    <div class="home__img-type">Android</div>
+  <div class="home-card__img" [ngStyle]="{backgroundImage: 'url(' + cardImage + ')'}">
+    <div class="home__img-type" *ngFor="let item of cardTypes">{{item}}</div>
   </div>
   <div class="home-card__wrap">
-    <h2>Lorem ipsum</h2>
+    <h2>{{cardTitle | slice:0:43}}{{cardTitle.length >= 43 ? '...' : ''}}</h2>
     <app-home-tube [color]="'#fff'" [mt]="17"></app-home-tube>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+    <p>{{cardDescr | slice:0:85}}{{cardDescr.length >= 85 ? '...' : ''}}</p>
   </div>
 </div>

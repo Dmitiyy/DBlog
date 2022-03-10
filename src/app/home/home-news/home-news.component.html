@@ -1,9 +1,14 @@
 <div class="home__news">
   <h2 class="home__news-title">Actual news</h2>
   <div class="home__news-wrap">
-    <app-home-card></app-home-card>
-    <app-home-card></app-home-card>
-    <app-home-card></app-home-card>
-    <app-home-card></app-home-card>
+    <app-home-card 
+      *ngFor="let item of loadedNews$ | async; trackBy: findIdNews"
+      [cardImage]="item.urlToImage" [cardDescr]="item.description" 
+      [cardTypes]="['BBC News']" [cardTitle]="item.title">
+    </app-home-card>
+  </div>
+  <div class="home__news-btn">
+    <button (click)="onLoadNews()" *ngIf="isLoadBtnShow"
+    [disabled]="loadingNews$ | async">Load more news ({{amountOfLoads}})</button>
   </div>
 </div>

@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { HomeModule } from './home/home.module';
+import { homeReducer } from './home/store/home.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { HomeEffects } from './home/store/home.effects';
 
 @NgModule({
   declarations: [
@@ -13,8 +16,9 @@ import { HomeModule } from './home/home.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-    HomeModule
+    StoreModule.forRoot({home: homeReducer}),
+    HomeModule,
+    EffectsModule.forRoot([HomeEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
