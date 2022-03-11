@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeCardComponent } from "./home-card/home-card.component";
 import { HomeCurrencyComponent } from "./home-currency/home-currency.component";
 import { HomeFooterComponent } from "./home-footer/home-footer.component";
-import { HomeGiveAwayComponent } from "./home-give-away/home-give-away.component";
 import { HomeHeaderComponent } from "./home-header/home-header.component";
 import { HomeNewsComponent } from "./home-news/home-news.component";
 import { HomeRoutingModule } from "./home-routing.module";
@@ -22,7 +21,6 @@ import { HomeComponent } from "./home.component";
     HomeCurrencyComponent,
     HomeNewsComponent,
     HomeCardComponent,
-    HomeGiveAwayComponent,
     HomeFooterComponent
   ],
   imports: [

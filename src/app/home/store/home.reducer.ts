@@ -9,24 +9,35 @@ export type TNews = {
   publishedAt: string;
 }
 
+export type TGames = {
+  title: string;
+  image: string;
+  description: string;
+  platforms: string;
+  gamerpower_url: string;
+}
+
 interface HomeState {
   loadedNews: Array<TNews>;
   loadingNews: Boolean;
+  newsPages: number;
 };
+
 export interface AppState {home: HomeState};
 
 const initialState: HomeState = {
   loadedNews: [],
-  loadingNews: false
+  loadingNews: false,
+  newsPages: 0
 };
 
 const _homeRecuder = createReducer(
   initialState,
   on(storeData, (state, {name, data}) => {
-    let transformedData: Array<TNews> = [];
+    let transformedData: Array<TNews | {pages: number}> = [];
 
     if (name === 'loadedNews') {
-      transformedData = [...state.loadedNews, ...data];
+      transformedData = [...state[name], ...data];
     }
 
     return {

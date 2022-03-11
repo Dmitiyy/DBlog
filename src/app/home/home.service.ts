@@ -22,10 +22,11 @@ export class HomeService {
       .set('pageSize', '4');
 
     this.store.dispatch(storeData({name: 'loadingNews', data: true}));
-
-    return this.http.get('https://newsapi.org/v2/top-headlines', {
+    // https://saurav.tech/NewsAPI/everything/bbc-news.json
+    return this.http.get('/everything/bbc-news.json', {
       params, headers: new HttpHeaders({
-        'Authorization': environment.newsKey
+        'Authorization': environment.newsKey,
+        'Access-Control-Allow-Origin': '*'        
       })
     });
   }

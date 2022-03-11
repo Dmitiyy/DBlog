@@ -2,7 +2,7 @@
   <h2 class="home__news-title">Actual news</h2>
   <div class="home__news-wrap">
     <app-home-card 
-      *ngFor="let item of loadedNews$ | async; trackBy: findIdNews"
+      *ngFor="let item of loadedNews$ | async | slice:0:(page*4) trackBy: findIdNews"
       [cardImage]="item.urlToImage" [cardDescr]="item.description" 
       [cardTypes]="['BBC News']" [cardTitle]="item.title">
     </app-home-card>

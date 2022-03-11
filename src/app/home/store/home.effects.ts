@@ -15,14 +15,19 @@ export class HomeEffects {
         return this.homeService.getNews(page)
           .pipe(
             map((data: any) => {
-              const transformedData = data.articles;
+              const transformedData = [...data.articles];
+              
+              this.store.dispatch(storeData({
+                name: 'newsPages', data: Math.floor(data.articles.length / 4)
+              }));
+
               this.store.dispatch(storeData({name: 'loadingNews', data: false}));
               return storeData({name: 'loadedNews', data: transformedData});
             })
           )
       })
     )
-  })
+  });
 
   constructor(
     private actions$: Actions, 

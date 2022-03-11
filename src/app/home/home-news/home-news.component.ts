@@ -12,31 +12,27 @@ import { AppState, TNews } from "../store/home.reducer";
 export class HomeNewsComponent implements OnInit {
   loadedNews$: Observable<Array<TNews>> = this.store.select(state => state.home.loadedNews);
   loadingNews$: Observable<Boolean> = this.store.select(state => state.home.loadingNews);
-  amountOfLoads: number = 2;
+  newsPages$: Observable<number> = this.store.select(state => state.home.newsPages);
+
+  amountOfLoads: number = 0;
   isLoadBtnShow: Boolean = true;
   page: number = 1;
+  loading: Boolean = false;
+  renderedData: TNews[] = [];
 
   constructor(private store: Store<AppState>) {}
   
   ngOnInit() {
     this.store.dispatch(getNewsStart({page: this.page}));
-    this.loadedNews$.subscribe(data => {
-      console.log(data);
-    });
-    this.loadingNews$.subscribe(data => {
-      console.log(data);
-    })
+    this.newsPages$.subscribe(data => {this.amountOfLoads = data - 1});
+    this.loadingNews$.subscribe(data => {this.loading = data});
+    this.loadedNews$.subscribe(data => {this.renderedData = [...data]});
   }
   
   onLoadNews() {
-    this.loadingNews$.subscribe(loading => {
-      console.log('here');
-      
-      if (!loading && this.amountOfLoads === 0) {this.isLoadBtnShow = false};
-    });
     this.amountOfLoads--;
     this.page++;
-    this.store.dispatch(getNewsStart({page: this.page}));
+    if (!this.loading && this.amountOfLoads === 0) {this.isLoadBtnShow = false};
   }
 
   findIdNews(index: number, element: TNews) {
