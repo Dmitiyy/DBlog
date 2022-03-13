@@ -29,6 +29,21 @@ export class HomeEffects {
     )
   });
 
+  receiveGames$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(HomeActions.RECEIVE_GAMES_START),
+      mergeMap(() => {
+        return this.homeService.receiveGames()
+          .pipe(
+            map(data => {
+              this.store.dispatch(storeData({name: 'loadingGames', data: false}));
+              return storeData({name: 'loadedGames', data: data});
+            })
+          )
+      })
+    )
+  })
+
   constructor(
     private actions$: Actions, 
     private homeService: HomeService,

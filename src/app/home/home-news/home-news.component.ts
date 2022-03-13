@@ -24,7 +24,7 @@ export class HomeNewsComponent implements OnInit {
   
   ngOnInit() {
     this.store.dispatch(getNewsStart({page: this.page}));
-    this.newsPages$.subscribe(data => {this.amountOfLoads = data - 1});
+    this.newsPages$.subscribe(data => {this.amountOfLoads = (data || 1) - 1});
     this.loadingNews$.subscribe(data => {this.loading = data});
     this.loadedNews$.subscribe(data => {this.renderedData = [...data]});
   }

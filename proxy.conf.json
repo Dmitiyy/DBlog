@@ -1,6 +1,12 @@
 {
   "/everything/*": {
-    "target": "https://saurav.tech/NewsAPI/",
+    "target": "https://saurav.tech/NewsAPI",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/api/*": {
+    "target": "https://www.gamerpower.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true

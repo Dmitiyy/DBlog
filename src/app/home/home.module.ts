@@ -11,6 +11,8 @@ import { HomeRoutingModule } from "./home-routing.module";
 import { HomeTubeComponent } from "./home-tube/home-tube.component";
 import { HomeTubeDirective } from "./home-tube/home-tube.directive";
 import { HomeComponent } from "./home.component";
+import { HomeGiveAwayComponent } from "./home-giveaway/home-giveaway.component";
+import { TransformPlatforms } from "./home-giveaway/home-giveaway.pipe";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HomeComponent } from "./home.component";
     HomeCurrencyComponent,
     HomeNewsComponent,
     HomeCardComponent,
-    HomeFooterComponent
+    HomeFooterComponent,
+    HomeGiveAwayComponent,
+    TransformPlatforms
   ],
   imports: [
     HomeRoutingModule,

@@ -10,4 +10,5 @@ export class HomeCardComponent {
   @Input() cardTitle: string = '';
   @Input() cardDescr: string = '';
   @Input() cardTypes: string[] = [];
+  @Input() cardLink: string = '';
 }

@@ -7,6 +7,7 @@ export type TNews = {
   urlToImage: string;
   content: string;
   publishedAt: string;
+  url: string;
 }
 
 export type TGames = {
@@ -21,6 +22,8 @@ interface HomeState {
   loadedNews: Array<TNews>;
   loadingNews: Boolean;
   newsPages: number;
+  loadedGames: Array<TGames>;
+  loadingGames: Boolean;
 };
 
 export interface AppState {home: HomeState};
@@ -28,7 +31,9 @@ export interface AppState {home: HomeState};
 const initialState: HomeState = {
   loadedNews: [],
   loadingNews: false,
-  newsPages: 0
+  newsPages: 0,
+  loadedGames: [],
+  loadingGames: false
 };
 
 const _homeRecuder = createReducer(

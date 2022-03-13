@@ -22,7 +22,7 @@ export class HomeService {
       .set('pageSize', '4');
 
     this.store.dispatch(storeData({name: 'loadingNews', data: true}));
-    // https://saurav.tech/NewsAPI/everything/bbc-news.json
+
     return this.http.get('/everything/bbc-news.json', {
       params, headers: new HttpHeaders({
         'Authorization': environment.newsKey,
@@ -30,4 +30,14 @@ export class HomeService {
       })
     });
   }
-}
+
+  receiveGames() {
+    this.store.dispatch(storeData({name: 'loadingGames', data: true}));
+
+    return this.http.get('/api/giveaways', {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+      })
+    })
+  }
+} 

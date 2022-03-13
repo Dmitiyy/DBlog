@@ -3,7 +3,11 @@
     <div class="home__img-type" *ngFor="let item of cardTypes">{{item}}</div>
   </div>
   <div class="home-card__wrap">
-    <h2>{{cardTitle | slice:0:43}}{{cardTitle.length >= 43 ? '...' : ''}}</h2>
+    <h2>
+      <a [href]="cardLink" target="_blank">
+        {{cardTitle | slice:0:43}}{{cardTitle.length >= 43 ? '...' : ''}}
+      </a>
+    </h2>
     <app-home-tube [color]="'#fff'" [mt]="17"></app-home-tube>
     <p>{{cardDescr | slice:0:85}}{{cardDescr.length >= 85 ? '...' : ''}}</p>
   </div>

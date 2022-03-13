@@ -1,0 +1,17 @@
+<div class="home__giveaway">
+  <h2 class="home__giveaway-title">Give away</h2>
+  <div class="home__giveaway-wrap">
+    <app-home-card
+      *ngFor="let item of games$ | async | slice:0:(currentPage*4); trackBy: findIdGames"
+      [cardImage]="item.image" 
+      [cardDescr]="item.description" 
+      [cardTypes]="item.platforms | transformPlatforms" 
+      [cardTitle]="item.title"
+      [cardLink]="item.gamerpower_url">
+    </app-home-card>
+  </div>
+  <div class="home__giveaway-btn" *ngIf="isShowLoadBtn">
+    <button [disabled]="loading$ | async" 
+    (click)="onLoadGames()">Load more games ({{pages || 0}})</button>
+  </div>
+</div>  
