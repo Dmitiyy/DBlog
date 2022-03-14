@@ -5,7 +5,7 @@ import {
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { environment } from "src/environments/environment";
+import { environment } from "src/environments/environment.prod";
 import { storeData } from "./store/home.actions";
 import { AppState } from "./store/home.reducer";
 
@@ -23,7 +23,7 @@ export class HomeService {
 
     this.store.dispatch(storeData({name: 'loadingNews', data: true}));
 
-    return this.http.get('everything/bbc-news.json', {
+    return this.http.get(environment.apiNews, {
       params, headers: new HttpHeaders({
         'Authorization': environment.newsKey,
         'Access-Control-Allow-Origin': '*'        
@@ -34,7 +34,7 @@ export class HomeService {
   receiveGames() {
     this.store.dispatch(storeData({name: 'loadingGames', data: true}));
 
-    return this.http.get('api/giveaways', {
+    return this.http.get(environment.apiGames, {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*'
       })
