@@ -23,7 +23,7 @@ export class HomeService {
 
     this.store.dispatch(storeData({name: 'loadingNews', data: true}));
 
-    return this.http.get('everything/bbc-news.json', {
+    return this.http.get(environment.apiNews, {
       params, headers: new HttpHeaders({
         'Authorization': environment.newsKey,
         'Access-Control-Allow-Origin': '*',
@@ -35,7 +35,7 @@ export class HomeService {
   receiveGames() {
     this.store.dispatch(storeData({name: 'loadingGames', data: true}));
 
-    return this.http.get('api/giveaways', {
+    return this.http.get(environment.apiGames, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',
