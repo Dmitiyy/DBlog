@@ -23,7 +23,7 @@ export class HomeService {
 
     this.store.dispatch(storeData({name: 'loadingNews', data: true}));
 
-    return this.http.get('everything/bbc-news.json', {
+    return this.http.get('https://saurav.tech/NewsAPI/everything/bbc-news.json', {
       params, headers: new HttpHeaders({
         'Authorization': environment.newsKey,
         'Access-Control-Allow-Origin': '*'        
@@ -34,7 +34,7 @@ export class HomeService {
   receiveGames() {
     this.store.dispatch(storeData({name: 'loadingGames', data: true}));
 
-    return this.http.get('api/giveaways', {
+    return this.http.get('https://www.gamerpower.com/api/giveaways', {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*'
       })
