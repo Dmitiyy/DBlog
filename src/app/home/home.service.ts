@@ -35,7 +35,7 @@ export class HomeService {
   receiveGames() {
     this.store.dispatch(storeData({name: 'loadingGames', data: true}));
 
-    return this.http.get(environment.apiGames, {
+    return this.http.get('environment.apiGames', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',
