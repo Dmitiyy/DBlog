@@ -27,7 +27,7 @@ export class HomeService {
       params, headers: new HttpHeaders({
         'Authorization': environment.newsKey,
         'Access-Control-Allow-Origin': '*'        
-      }), responseType: 'text'
+      }), responseType: 'text' as 'json'
     });
   }
 
@@ -37,7 +37,7 @@ export class HomeService {
     return this.http.get(environment.apiGames, {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*'
-      }), responseType: 'text'
+      }), responseType: 'text' as 'json'
     })
   }
 } 
