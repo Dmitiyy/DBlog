@@ -10,6 +10,9 @@
       [cardLink]="item.url">
     </app-home-card>
   </div>
+  <div class="loading" *ngIf="loading">
+    <img src="assets/images/loading.svg" alt="loading" [ngStyle]="{width: '130px'}">
+  </div>
   <div class="home__news-btn" *ngIf="isLoadBtnShow">
     <button (click)="onLoadNews()" 
     [disabled]="loadingNews$ | async">Load more news ({{amountOfLoads}})</button>
