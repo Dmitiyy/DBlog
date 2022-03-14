@@ -1,13 +1,13 @@
 {
   "/everything/*": {
     "target": "https://saurav.tech/NewsAPI",
-    "secure": false,
+    "secure": true,
     "logLevel": "debug",
     "changeOrigin": true
   },
   "/api/*": {
     "target": "https://www.gamerpower.com",
-    "secure": false,
+    "secure": true,
     "logLevel": "debug",
     "changeOrigin": true
   }
