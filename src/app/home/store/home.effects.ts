@@ -14,6 +14,8 @@ export class HomeEffects {
     return this.actions$.pipe(
       ofType(HomeActions.GET_NEWS_START),
       mergeMap(() => {
+        this.store.dispatch(storeData({name: 'loadingNews', data: true}));
+
         return this.http.get('https://saurav.tech/NewsAPI/everything/bbc-news.json')
           .pipe(
             map((data: any) => {
@@ -35,6 +37,7 @@ export class HomeEffects {
     return this.actions$.pipe(
       ofType(HomeActions.RECEIVE_GAMES_START),
       mergeMap(() => {
+        this.store.dispatch(storeData({name: 'loadingGames', data: true}));
         return this.http.get('https://gamerpower.p.rapidapi.com/api/giveaways', {
           headers: new HttpHeaders({
             'x-rapidapi-host': 'gamerpower.p.rapidapi.com',
