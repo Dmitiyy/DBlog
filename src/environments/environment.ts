@@ -4,4 +4,5 @@ export const environment = {
   newsKey: '8859f6df7c614c6d9dd44a3469926a1d',
   apiNews: 'https://saurav.tech/NewsAPI/everything/bbc-news.json',
   apiGames: 'https://www.gamerpower.com/api/giveaways',
+  rapidapiKey: '11169adf32mshb38f97485f5f3cbp1ca209jsnf0ea48f1a487'
 };

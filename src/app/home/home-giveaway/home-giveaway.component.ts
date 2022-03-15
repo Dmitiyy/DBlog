@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
@@ -16,7 +17,7 @@ export class HomeGiveAwayComponent implements OnInit {
   currentPage: number = 1;
   isShowLoadBtn: Boolean = true;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private http: HttpClient) {}
 
   ngOnInit() {
     this.store.dispatch(receiveGamesStart());
