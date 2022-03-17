@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeCardComponent } from "./home-card/home-card.component";
 import { HomeCurrencyComponent } from "./home-currency/home-currency.component";
@@ -30,7 +31,7 @@ import { TransformPlatforms } from "./home-giveaway/home-giveaway.pipe";
   imports: [
     HomeRoutingModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
 })
 export class HomeModule {}

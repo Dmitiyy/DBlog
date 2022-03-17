@@ -8,6 +8,7 @@ import { HomeModule } from './home/home.module';
 import { homeReducer } from './home/store/home.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { HomeEffects } from './home/store/home.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeEffects } from './home/store/home.effects';
     AppRoutingModule,
     StoreModule.forRoot({home: homeReducer}),
     HomeModule,
-    EffectsModule.forRoot([HomeEffects])
+    EffectsModule.forRoot([HomeEffects]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

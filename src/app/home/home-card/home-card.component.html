@@ -1,4 +1,4 @@
-<div class="home-card">
+<div class="home-card" [@cardAnimation]="animationState">
   <div class="home-card__img" [ngStyle]="{backgroundImage: 'url(' + cardImage + ')'}">
     <div class="home__img-type" *ngFor="let item of cardTypes">{{item}}</div>
   </div>
