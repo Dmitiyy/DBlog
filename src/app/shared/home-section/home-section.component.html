@@ -1,0 +1,20 @@
+<div class="home__news">
+  <h2 class="home__news-title">{{name}}</h2>
+  <div class="home__news-wrap">
+    <app-home-card 
+      *ngFor="let item of cardData | slice:0:(page*4); trackBy: findId"
+      [cardImage]="isGames ? item.image : item.urlToImage" 
+      [cardDescr]="item.description" 
+      [cardTypes]="isGames ? (item.platforms | transformPlatforms) : types" 
+      [cardTitle]="item.title"
+      [cardLink]="isGames ? item.gamerpower_url : item.url">
+    </app-home-card>
+  </div>
+  <div class="loading" *ngIf="loading">
+    <img src="assets/images/loading.svg" alt="loading" [ngStyle]="{width: '130px'}">
+  </div>
+  <div class="home__news-btn" *ngIf="isLoadBtnShow">
+    <button (click)="onLoadData()" 
+    [disabled]="loading">Load more news ({{amountOfLoads}})</button>
+  </div>
+</div>

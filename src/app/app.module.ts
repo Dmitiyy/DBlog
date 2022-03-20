@@ -9,6 +9,7 @@ import { homeReducer } from './home/store/home.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { HomeEffects } from './home/store/home.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     StoreModule.forRoot({home: homeReducer}),
     HomeModule,
+    SharedModule,
     EffectsModule.forRoot([HomeEffects]),
     BrowserAnimationsModule
   ],
