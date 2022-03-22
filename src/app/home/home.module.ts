@@ -10,6 +10,7 @@ import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
 import { HomeGiveAwayComponent } from "./home-giveaway/home-giveaway.component";
 import { SharedModule } from "../shared/shared.module";
+import { ChatComponent } from "../chat/chat.component";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from "../shared/shared.module";
     HomeNewsComponent,
     HomeFooterComponent,
     HomeGiveAwayComponent,
+    ChatComponent
   ],
   imports: [
     HomeRoutingModule,
