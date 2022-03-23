@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "daptellum-blog": {
+      "hosting": {
+        "dblog": [
+          "daptellum-blog"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "daptellum-blog"
+  }
+}

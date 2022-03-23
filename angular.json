@@ -106,6 +106,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "dblog:build:production",
+            "firebaseProject": "daptellum-blog",
+            "firebaseHostingSite": "daptellum-blog"
+          }
         }
       }
     }

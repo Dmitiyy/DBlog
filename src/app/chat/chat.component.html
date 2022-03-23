@@ -1,3 +1,41 @@
-<div class="chat">
-  <button class="chat-open">Open a general chat</button>
+<div class="chat" [@openChat]="isOpenChat ? 'open' : 'closed'" [ngSwitch]="isOpenChat">
+  <button class="chat-open" *ngSwitchCase="false" (click)="toggleChat()">
+    Open a general chat
+  </button>
+  <div class="chat__content" *ngSwitchCase="true">
+    <div class="chat__content-header">
+      <p>Daptellum</p>
+      <div class="chat__content-close" (click)="toggleChat()"><p>&#10005;</p></div>
+    </div>
+    <div class="chat__content-wrap">
+      <div class="chat__message-wrap">
+        <div class="chat__message">
+          <p>Daptellum</p>
+          <div>Hello, how are you?</div>
+        </div>
+      </div>
+      <div class="chat__message">
+        <p>John</p>
+        <div>Hi, i am fine and you?</div>
+      </div>
+      <div class="chat__message-wrap">
+        <div class="chat__message">
+          <p>Daptellum</p>
+          <div>I am good, man</div>
+        </div>
+      </div>
+      <div class="chat__message">
+        <p>John</p>
+        <div>Hi, i am fine and you?</div>
+      </div>
+      <div class="chat__message">
+        <p>John</p>
+        <div>Hi, i am fine and you?</div>
+      </div>
+    </div>
+    <div class="chat__content-input">
+      <input type="text" placeholder="Your message">
+      <div><img src="assets/images/send.png" alt="send_photo"></div>
+    </div>
+  </div>
 </div>
