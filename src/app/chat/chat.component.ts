@@ -2,6 +2,8 @@ import { state, trigger, style, transition, animate } from "@angular/animations"
 import { Component, OnInit } from "@angular/core";
 import { AngularFireDatabase } from "@angular/fire/compat/database";
 
+interface Messages {name: string; message: string};
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -17,16 +19,26 @@ import { AngularFireDatabase } from "@angular/fire/compat/database";
 export class ChatComponent implements OnInit {
   isOpenChat: Boolean = false;
   test = this.db.list('tests');
+  message: string = '';
+  listOfMessages: Messages[] = [];
 
   constructor(private db: AngularFireDatabase) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.test.valueChanges()
-      .subscribe(data => {
-        console.log(data);
-        
-      })
+      .subscribe((data) => {
+        this.listOfMessages.length = 0;
+        data.forEach((item: any) => {this.listOfMessages.push(item)});
+      });
   }
 
   toggleChat() {this.isOpenChat = !this.isOpenChat};
+
+  onSendMessage() {
+    if (this.message.length !== 0) {
+      this.test.push({name: 'Daptellum', message: this.message});
+    }
+  }
+
+  findId(index: number, item: any) {return item};
 }

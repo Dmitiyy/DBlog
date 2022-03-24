@@ -44,6 +44,9 @@
       height: 390px
       margin-top: 15px
       overflow: auto
+      flex-direction: column
+      display: flex
+
       /* width */
       &::-webkit-scrollbar
         width: 7px
@@ -106,5 +109,7 @@
 .chat__message-wrap
   display: flex
   justify-content: flex-end
+  .chat__message
+    text-align: right
   p
     text-align: right

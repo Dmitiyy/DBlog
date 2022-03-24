@@ -11,6 +11,7 @@ import { HomeComponent } from "./home.component";
 import { HomeGiveAwayComponent } from "./home-giveaway/home-giveaway.component";
 import { SharedModule } from "../shared/shared.module";
 import { ChatComponent } from "../chat/chat.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ChatComponent } from "../chat/chat.component";
     HomeRoutingModule,
     CommonModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
 })
 export class HomeModule {}
