@@ -1,5 +1,5 @@
 import { state, trigger, style, transition, animate } from "@angular/animations";
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { AngularFireDatabase } from "@angular/fire/compat/database";
 
 interface Messages {name: string; message: string};
@@ -21,6 +21,7 @@ export class ChatComponent implements OnInit {
   test = this.db.list('tests');
   message: string = '';
   listOfMessages: Messages[] = [];
+  @ViewChild('domChat') private domChat!: ElementRef<HTMLDivElement>;
 
   constructor(private db: AngularFireDatabase) {}
 
@@ -29,6 +30,7 @@ export class ChatComponent implements OnInit {
       .subscribe((data) => {
         this.listOfMessages.length = 0;
         data.forEach((item: any) => {this.listOfMessages.push(item)});
+        this.scrollToBottom();
       });
   }
 
@@ -38,6 +40,14 @@ export class ChatComponent implements OnInit {
     if (this.message.length !== 0) {
       this.test.push({name: 'Daptellum', message: this.message});
     }
+  }
+
+  scrollToBottom() {
+    if (this.domChat) {
+      setTimeout(() => {
+        this.domChat.nativeElement.scrollTop = this.domChat.nativeElement.scrollHeight;
+      })
+    };
   }
 
   findId(index: number, item: any) {return item};

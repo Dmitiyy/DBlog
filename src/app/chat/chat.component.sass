@@ -46,7 +46,7 @@
       overflow: auto
       flex-direction: column
       display: flex
-
+      scroll-behavior: smooth
       /* width */
       &::-webkit-scrollbar
         width: 7px
@@ -105,6 +105,13 @@
       padding: 15px
       border-radius: 20px
       background: #fff
+
+      p
+        color: #000
+        word-wrap: anywhere
+        margin: 0
+        font-weight: 500
+        font-size: 18px
 
 .chat__message-wrap
   display: flex

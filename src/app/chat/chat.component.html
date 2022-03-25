@@ -7,12 +7,12 @@
       <p>Daptellum</p>
       <div class="chat__content-close" (click)="toggleChat()"><p>&#10005;</p></div>
     </div>
-    <div class="chat__content-wrap">
+    <div class="chat__content-wrap" #domChat>
       <div *ngFor="let item of listOfMessages; trackBy: findId">
         <!-- <div class="chat__message-wrap"> -->
           <div class="chat__message">
             <p>{{item.name}}</p>
-            <div>{{item.message}}</div>
+            <div><p>{{item.message}}</p></div>
           </div>
         <!-- </div> -->
       </div>
