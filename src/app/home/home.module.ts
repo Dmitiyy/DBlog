@@ -12,6 +12,7 @@ import { HomeGiveAwayComponent } from "./home-giveaway/home-giveaway.component";
 import { SharedModule } from "../shared/shared.module";
 import { ChatComponent } from "../chat/chat.component";
 import { FormsModule } from "@angular/forms";
+import { CookieService } from "ngx-cookie-service";
 
 @NgModule({
   declarations: [
@@ -30,5 +31,6 @@ import { FormsModule } from "@angular/forms";
     SharedModule,
     FormsModule
   ],
+  providers: [CookieService]
 })
 export class HomeModule {}

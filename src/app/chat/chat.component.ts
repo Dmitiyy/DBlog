@@ -1,6 +1,7 @@
 import { state, trigger, style, transition, animate } from "@angular/animations";
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { AngularFireDatabase } from "@angular/fire/compat/database";
+import { CookieService } from "ngx-cookie-service";
 
 interface Messages {name: string; message: string};
 
@@ -19,36 +20,57 @@ interface Messages {name: string; message: string};
 export class ChatComponent implements OnInit {
   isOpenChat: Boolean = false;
   test = this.db.list('tests');
+  userNames = this.db.list('userNames');
   message: string = '';
   listOfMessages: Messages[] = [];
-  @ViewChild('domChat') private domChat!: ElementRef<HTMLDivElement>;
+  @ViewChild('domChat') domChat!: ElementRef<HTMLDivElement>;
+  userName: string = this.cookies.get('userName');
+  isNameOpen: Boolean = false;
 
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase, private cookies: CookieService) {}
 
   ngOnInit() {
     this.test.valueChanges()
       .subscribe((data) => {
         this.listOfMessages.length = 0;
         data.forEach((item: any) => {this.listOfMessages.push(item)});
-        this.scrollToBottom();
+        if (this.listOfMessages.length !== 0 && this.domChat) {this.scrollToBottom()};
       });
   }
 
-  toggleChat() {this.isOpenChat = !this.isOpenChat};
+  toggleChat() {
+    this.isOpenChat = !this.isOpenChat;
+    if (this.isOpenChat) {this.scrollToBottom()};
+  };
 
   onSendMessage() {
-    if (this.message.length !== 0) {
-      this.test.push({name: 'Daptellum', message: this.message});
+    if (this.message.length !== 0 && this.userName.length !== 0) {
+      this.test.push({name: this.userName, message: this.message});
+      this.message = '';
     }
   }
 
   scrollToBottom() {
-    if (this.domChat) {
-      setTimeout(() => {
-        this.domChat.nativeElement.scrollTop = this.domChat.nativeElement.scrollHeight;
-      })
-    };
+    setTimeout(() => {
+      this.domChat!.nativeElement.scrollTop = this.domChat!.nativeElement.scrollHeight;
+    });
   }
+
+  toggleName(value: Boolean) {
+    if (this.isNameOpen && this.userName.length !== 0) {
+      const names = this.userNames.valueChanges();
+
+      names.subscribe(data => {
+        const isNameExist = data.includes(this.userName);
+        
+        if (!isNameExist) {
+          this.userNames.push(this.userName);
+          this.cookies.set('userName', this.userName, {expires: 30});
+        }  
+      });
+    }
+    this.isNameOpen = value;
+  };
 
   findId(index: number, item: any) {return item};
 }

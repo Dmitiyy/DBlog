@@ -4,17 +4,20 @@
   </button>
   <div class="chat__content" *ngSwitchCase="true">
     <div class="chat__content-header">
-      <p>Daptellum</p>
+      <input type="text" [readonly]="!isNameOpen" placeholder="Enter your name" 
+      [(ngModel)]="userName" (dblclick)="toggleName(true)"
+      [ngClass]="{'chat__header-input': true, 'active': isNameOpen}"
+      (keydown.enter)="toggleName(false)">
       <div class="chat__content-close" (click)="toggleChat()"><p>&#10005;</p></div>
     </div>
     <div class="chat__content-wrap" #domChat>
       <div *ngFor="let item of listOfMessages; trackBy: findId">
-        <!-- <div class="chat__message-wrap"> -->
+        <div [ngClass]="{'chat__message-wrap': item.name === userName}">
           <div class="chat__message">
             <p>{{item.name}}</p>
             <div><p>{{item.message}}</p></div>
           </div>
-        <!-- </div> -->
+        </div>
       </div>
     </div>
     <div class="chat__content-input">
